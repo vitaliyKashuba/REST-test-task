@@ -31,8 +31,10 @@ public class RESTController
         {
             // return error here
         }
-        List<MonobankCurrency> l = objectMapper.readValue(request.body(), new TypeReference<List<MonobankCurrency>>(){});
-        System.out.println(l);  // TODO check exception here
+        List<MonobankCurrency> l = objectMapper.readValue(request.body(), new TypeReference<List<MonobankCurrency>>(){});   // TODO check exception here
+        l.forEach(c -> {
+            System.out.println(c.getCurrencyCodeA() + " " + c.getCurrencyCodeB() + " " + c.getDate() + " " +  c.getRateBuy() + " " + c.getRateSell() + " " + c.getRateCross());
+        });
         if(currencyCode == null)
         {
             // данные по курсу валюты.
