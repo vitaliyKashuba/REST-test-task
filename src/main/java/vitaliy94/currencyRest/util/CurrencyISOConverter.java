@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * class used to convert numeric and char currency codes
+ */
 @Slf4j
 public class CurrencyISOConverter
 {
@@ -26,6 +29,7 @@ public class CurrencyISOConverter
         {
             log.error("probably Jackson error");
             e.printStackTrace();
+            // TODO kill process here?
         }
         log.info("ISO currencys: " + currencyISOCodes);
     }
@@ -38,6 +42,11 @@ public class CurrencyISOConverter
     public static String getNumericCodeByChar(String charCode)
     {
         return currencyISOCodes.inverse().get(charCode);
+    }
+
+    public static boolean isValidCharCode(String code)
+    {
+        return currencyISOCodes.values().contains(code);
     }
 
 

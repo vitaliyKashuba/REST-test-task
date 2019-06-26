@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 public class AppUtil
 {
-    public static final String FILENAME = "currencys.json";
+    static final String FILENAME = "currencys.json";
 
     public static void main(String[] args)
     {
@@ -55,13 +55,20 @@ public class AppUtil
     /**
      * read text file from resources and return content as string
      */
-    public static String readFromResources(String resourceName) throws IOException
+    static String readFromResources(String resourceName) throws IOException
     {
         String fileContent;
         fileContent = Resources.toString(Resources.getResource(resourceName), Charset.defaultCharset());
         return fileContent;
     }
 
+    /**
+     * this was used to parse currencys codes from minfin
+     * works too long to scrape data every project rerun, so data stored in json and red from resources
+     *
+     * @return mar with numeric currency codea as keys, and char codes as values
+     * @throws IOException inc ase of http request errors
+     */
     private static Map scrapeISOCurrencys()throws IOException
     {
         final String ISO_CURRENCYS_URL = "https://index.minfin.com.ua/reference/currency/code/";
