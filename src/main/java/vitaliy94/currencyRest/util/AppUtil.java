@@ -8,6 +8,10 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.io.Resources;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import vitaliy94.currencyRest.model.MonobankCurrency;
+import vitaliy94.currencyRest.model.MyCurrency;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
+
 
 public class AppUtil
 {

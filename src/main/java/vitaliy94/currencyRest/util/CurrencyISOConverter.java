@@ -10,12 +10,11 @@ import java.io.IOException;
 import java.util.Map;
 
 @Slf4j
-@Component
 public class CurrencyISOConverter
 {
-    private BiMap<String, String> currencyISOCodes; // key - numericCode, value - charCode
+    private static BiMap<String, String> currencyISOCodes; // key - numericCode, value - charCode
 
-    CurrencyISOConverter()
+    static
     {
         currencyISOCodes = HashBiMap.create();
         try
@@ -31,12 +30,12 @@ public class CurrencyISOConverter
         log.info("ISO currencys: " + currencyISOCodes);
     }
 
-    public String getCharCodeByNumeric(String numericCode)
+    public static String getCharCodeByNumeric(String numericCode)
     {
         return currencyISOCodes.get(numericCode);
     }
 
-    public String getNumericCodeByChar(String charCode)
+    public static String getNumericCodeByChar(String charCode)
     {
         return currencyISOCodes.inverse().get(charCode);
     }
