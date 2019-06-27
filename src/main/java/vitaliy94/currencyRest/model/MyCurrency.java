@@ -1,7 +1,6 @@
 package vitaliy94.currencyRest.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.text.SimpleDateFormat;

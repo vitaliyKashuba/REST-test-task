@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.util.Map;
 

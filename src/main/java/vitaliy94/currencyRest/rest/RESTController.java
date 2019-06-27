@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.kevinsawicki.http.HttpRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import vitaliy94.currencyRest.model.ErrorMesage;
 import vitaliy94.currencyRest.model.MonobankCurrency;
 import vitaliy94.currencyRest.model.MyCurrency;
-import vitaliy94.currencyRest.util.AppUtil;
 import vitaliy94.currencyRest.util.CurrencyISOConverter;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +28,15 @@ public class RESTController
     @RequestMapping(value = "/currency", produces = "application/json")
     public ResponseEntity getCurrency(@RequestParam(value = "currencyCode", required=false) String currencyCode)
     {
-        if (currencyCode != null && !CurrencyISOConverter.isValidCharCode(currencyCode))                                // input validation
+        if (currencyCode != null)                                                                                       // input validation
         {
-            return new ResponseEntity<>(new ErrorMesage("Invalid currency code \'" + currencyCode + "\'") , HttpStatus.BAD_REQUEST);
+            if(!CurrencyISOConverter.isValidCharCode(currencyCode))
+            {
+                return new ResponseEntity<>(new ErrorMesage("Invalid currency code \'" + currencyCode + "\'") , HttpStatus.BAD_REQUEST);
+            } else if (currencyCode.equals("UAH"))
+            {
+                return new ResponseEntity<>(new MyCurrency("UAH", 1, 1, new Date()), HttpStatus.OK);
+            }
         }
 
         ObjectMapper objectMapper = new ObjectMapper();

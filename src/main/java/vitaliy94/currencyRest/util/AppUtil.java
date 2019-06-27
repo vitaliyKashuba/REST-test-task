@@ -4,17 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.google.common.io.Resources;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import vitaliy94.currencyRest.model.MonobankCurrency;
-import vitaliy94.currencyRest.model.MyCurrency;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -24,7 +16,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 

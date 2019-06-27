@@ -1,6 +1,5 @@
 package vitaliy94.currencyRest.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import vitaliy94.currencyRest.util.CurrencyISOConverter;
 

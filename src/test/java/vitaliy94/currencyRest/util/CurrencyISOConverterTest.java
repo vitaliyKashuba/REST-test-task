@@ -7,17 +7,22 @@ import static org.junit.Assert.*;
 
 public class CurrencyISOConverterTest {
 
-    CurrencyISOConverter converter = new CurrencyISOConverter();
-
     @Test
     public void getCharCodeByNumeric()
     {
-        assertEquals("UAH", converter.getCharCodeByNumeric("980"));
+        assertEquals("UAH", CurrencyISOConverter.getCharCodeByNumeric("980"));
     }
 
     @Test
     public void getNumericCodeByChar()
     {
-        assertEquals("980", converter.getNumericCodeByChar("UAH"));
+        assertEquals("980", CurrencyISOConverter.getNumericCodeByChar("UAH"));
+    }
+
+    @Test
+    public void isValidCharCode()
+    {
+        assertTrue(CurrencyISOConverter.isValidCharCode("UAH"));
+        assertFalse(CurrencyISOConverter.isValidCharCode("UA"));
     }
 }
